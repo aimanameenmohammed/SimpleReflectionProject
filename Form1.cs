@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
@@ -26,10 +27,8 @@ namespace ReflectionProject
         Assembly _assembly;
         Type[] _types;
         Type _SelectedClass;
-        MethodInfo[] _AllSelectedClassMethods;
-        MethodInfo _SelectedMethodInfo;
-        MemberInfo _SelectedMemberInfo;
-        ParameterInfo[] _SelectedParameters;
+        bool IsStatic=false;
+        MemberInfo _SelectedMember;
         object[] _Values;
         object _Instance=null;
         void ShowClasses()
@@ -74,28 +73,14 @@ namespace ReflectionProject
             }
         }
 
-        void PrintAllSelectedClassDetails()
-        {
-
-            lbMethodList.Items.Clear();
-            _AllSelectedClassMethods = _SelectedClass.GetMethods();
-            foreach (var method in _AllSelectedClassMethods)
-            {
-
-                lbMethodList.Items.Add(method.Name);
-            }
-
-
-           
-        }
-
+      
 
         void BuildInputs()
         {
 
             flyParameters.Controls.Clear();
-            clsUIManager.GenerateInput(_SelectedParameters,ref flyParameters);
-   
+            clsUIManager.GenerateInputs(_SelectedMember, ref flyParameters);
+
         }
 
         private void lbClassList_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,43 +105,84 @@ namespace ReflectionProject
 
 
 
-
-        void ShowParameters()
+ 
+        void ShowMethodParameters(ParameterInfo[] Parameters)
         {
             dgvShowParameters.Rows.Clear();
 
-            _SelectedParameters=_SelectedMethodInfo.GetParameters();
-            foreach(var Parameter in _SelectedParameters)
+            foreach(var Parameter in Parameters)
             {
                 dgvShowParameters.Rows.Add(Parameter.Name, Parameter.ParameterType.Name, Parameter.IsOptional);
             }
-            BuildInputs();
 
         }
 
 
-        void ShowDetail(MethodInfo method)
+        void ShowDetail<T, U, K>(T Name, U ReturnType, K IsStatic) 
         {
 
-            lblMethodName.Text = method.Name;
-            lblMethodReturnType.Text = method.ReturnType.ToString();
-            lblisStatic.Text = method.IsStatic.ToString();
+            lblSelectedName.Text = Name.ToString();
+            lblSelectedReturnType.Text =ReturnType.ToString();
+            lblIsSelectedStatic.Text = IsStatic.ToString();
 
         }
+
+
+
+        void PrintAllSelectedClassDetails()
+        {
+
+            lbMethodList.Items.Clear();
+            MemberInfo[] Members = _SelectedClass.GetMembers();
+
+            foreach (MemberInfo Member in Members)
+            {
+
+                if(Member is MethodInfo Method && !Method.IsSpecialName)
+                {
+                    lbMethodList.Items.Add(new clsMemberItem { member = Method, Name = Method.Name, Type = "Method" });
+                }
+
+                else if (Member is PropertyInfo property)
+                {
+                    lbMethodList.Items.Add(new clsMemberItem { member = property, Name = property.Name, Type = "Property" });
+                }
+            }
+        }
+
 
         private void lbMethodList_SelectedIndexChanged(object sender, EventArgs e)
         {
             MakeSomeContorlsEmpty();
 
-
             int Index = lbMethodList.SelectedIndex;
             if (Index != -1)
             {
 
-                _SelectedMemberInfo = _AllSelectedClassMethods[Index];
-                _SelectedMethodInfo = _AllSelectedClassMethods[Index];
-                ShowDetail(_SelectedMethodInfo);     
-                ShowParameters();
+
+                _SelectedMember = ((clsMemberItem)lbMethodList.SelectedItem).member;
+
+
+                if (_SelectedMember is MethodInfo Method)
+                {
+                    IsStatic= Method.IsStatic;
+
+                    ShowDetail(Method.Name, Method.ReturnType, IsStatic);
+                    ShowMethodParameters(Method.GetParameters());
+                   
+                }
+                else if(_SelectedMember is PropertyInfo property)
+                {
+                    if (!property.CanWrite)
+                        MessageBox.Show(@"this Property Read-only and cannot be assigned a value");
+                    else
+                        IsStatic = (property.SetMethod.IsStatic);
+
+                    ShowDetail(property.Name, property.PropertyType, IsStatic);
+
+                }
+
+                BuildInputs();
             }
 
 
@@ -165,11 +191,11 @@ namespace ReflectionProject
 
         private object ExecuteMember()
         {
-            if (_SelectedMemberInfo is MethodInfo method)
+            if (_SelectedMember is MethodInfo method)
                 return method?.Invoke(_Instance, _Values);
-            else if (_SelectedMemberInfo is PropertyInfo property)
+            else if (_SelectedMember is PropertyInfo property)
             {
-                property.SetValue(_Instance, _Values);
+                property.SetValue(_Instance, _Values.GetValue(0));
                 return property.GetValue(_Instance);
             }
 
@@ -180,7 +206,7 @@ namespace ReflectionProject
         {
             lblResult.Text = "";    
 
-            if (!_SelectedMethodInfo.IsStatic || _SelectedMemberInfo is PropertyInfo Property)
+            if (!IsStatic)
                 _Instance = Activator.CreateInstance(_SelectedClass);
            
 
@@ -215,13 +241,13 @@ namespace ReflectionProject
             if (PropertiesInfo.Length>0)
             {
 
-                foreach(var Property in PropertiesInfo)
+                foreach(PropertyInfo property in PropertiesInfo)
                 {
 
 
 
-                    object Value = Property.GetValue(Result);
-                    lblResult.Text += Property.Name + " : " + Value + Environment.NewLine;
+                    object Value = property.GetValue(Result);
+                    lblResult.Text += property.Name + " : " + Value + Environment.NewLine;
 
                 }
 
@@ -236,11 +262,9 @@ namespace ReflectionProject
 
         void GetValuesFromUI()
         {
-            _Values = clsUIManager.GetValuesFromUI(_SelectedParameters, flyParameters);
+            _Values = clsUIManager.GetValuesFromUI(_SelectedMember, flyParameters);
 
             Execute();
-
-
         }
 
 
@@ -269,9 +293,9 @@ namespace ReflectionProject
             dataGridView1.DataSource = null;
             dataGridView1.Visible = false;
             lblResult.Text = string.Empty;
-            lblMethodName.Text = string.Empty;
-            lblMethodReturnType.Text = string.Empty;
-            lblisStatic.Text = string.Empty;
+            lblSelectedName.Text = string.Empty;
+            lblSelectedReturnType.Text = string.Empty;
+            lblIsSelectedStatic.Text = string.Empty;
 
             txtDLLPath.Text= string.Empty;
 

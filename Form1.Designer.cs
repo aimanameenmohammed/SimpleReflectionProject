@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lbClassList = new System.Windows.Forms.ListBox();
@@ -45,9 +45,9 @@
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblisStatic = new System.Windows.Forms.Label();
-            this.lblMethodReturnType = new System.Windows.Forms.Label();
-            this.lblMethodName = new System.Windows.Forms.Label();
+            this.lblIsSelectedStatic = new System.Windows.Forms.Label();
+            this.lblSelectedReturnType = new System.Windows.Forms.Label();
+            this.lblSelectedName = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,12 +61,12 @@
             this.flyParameters = new System.Windows.Forms.FlowLayoutPanel();
             this.label12 = new System.Windows.Forms.Label();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblResult = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.guna2Panel2.SuspendLayout();
@@ -258,9 +258,9 @@
             this.guna2Panel5.BorderColor = System.Drawing.Color.Gainsboro;
             this.guna2Panel5.BorderRadius = 10;
             this.guna2Panel5.BorderThickness = 1;
-            this.guna2Panel5.Controls.Add(this.lblisStatic);
-            this.guna2Panel5.Controls.Add(this.lblMethodReturnType);
-            this.guna2Panel5.Controls.Add(this.lblMethodName);
+            this.guna2Panel5.Controls.Add(this.lblIsSelectedStatic);
+            this.guna2Panel5.Controls.Add(this.lblSelectedReturnType);
+            this.guna2Panel5.Controls.Add(this.lblSelectedName);
             this.guna2Panel5.Controls.Add(this.label8);
             this.guna2Panel5.Controls.Add(this.label7);
             this.guna2Panel5.Controls.Add(this.label6);
@@ -271,38 +271,38 @@
             this.guna2Panel5.Size = new System.Drawing.Size(801, 126);
             this.guna2Panel5.TabIndex = 5;
             // 
-            // lblisStatic
+            // lblIsSelectedStatic
             // 
-            this.lblisStatic.AutoSize = true;
-            this.lblisStatic.BackColor = System.Drawing.Color.Transparent;
-            this.lblisStatic.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold);
-            this.lblisStatic.Location = new System.Drawing.Point(103, 90);
-            this.lblisStatic.Name = "lblisStatic";
-            this.lblisStatic.Size = new System.Drawing.Size(35, 24);
-            this.lblisStatic.TabIndex = 8;
-            this.lblisStatic.Text = "No";
+            this.lblIsSelectedStatic.AutoSize = true;
+            this.lblIsSelectedStatic.BackColor = System.Drawing.Color.Transparent;
+            this.lblIsSelectedStatic.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold);
+            this.lblIsSelectedStatic.Location = new System.Drawing.Point(103, 90);
+            this.lblIsSelectedStatic.Name = "lblIsSelectedStatic";
+            this.lblIsSelectedStatic.Size = new System.Drawing.Size(35, 24);
+            this.lblIsSelectedStatic.TabIndex = 8;
+            this.lblIsSelectedStatic.Text = "No";
             // 
-            // lblMethodReturnType
+            // lblSelectedReturnType
             // 
-            this.lblMethodReturnType.AutoSize = true;
-            this.lblMethodReturnType.BackColor = System.Drawing.Color.Transparent;
-            this.lblMethodReturnType.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold);
-            this.lblMethodReturnType.Location = new System.Drawing.Point(156, 52);
-            this.lblMethodReturnType.Name = "lblMethodReturnType";
-            this.lblMethodReturnType.Size = new System.Drawing.Size(61, 24);
-            this.lblMethodReturnType.TabIndex = 7;
-            this.lblMethodReturnType.Text = "String";
+            this.lblSelectedReturnType.AutoSize = true;
+            this.lblSelectedReturnType.BackColor = System.Drawing.Color.Transparent;
+            this.lblSelectedReturnType.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold);
+            this.lblSelectedReturnType.Location = new System.Drawing.Point(156, 52);
+            this.lblSelectedReturnType.Name = "lblSelectedReturnType";
+            this.lblSelectedReturnType.Size = new System.Drawing.Size(61, 24);
+            this.lblSelectedReturnType.TabIndex = 7;
+            this.lblSelectedReturnType.Text = "String";
             // 
-            // lblMethodName
+            // lblSelectedName
             // 
-            this.lblMethodName.AutoSize = true;
-            this.lblMethodName.BackColor = System.Drawing.Color.Transparent;
-            this.lblMethodName.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold);
-            this.lblMethodName.Location = new System.Drawing.Point(103, 10);
-            this.lblMethodName.Name = "lblMethodName";
-            this.lblMethodName.Size = new System.Drawing.Size(104, 24);
-            this.lblMethodName.TabIndex = 6;
-            this.lblMethodName.Text = "GetName()";
+            this.lblSelectedName.AutoSize = true;
+            this.lblSelectedName.BackColor = System.Drawing.Color.Transparent;
+            this.lblSelectedName.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.8F, System.Drawing.FontStyle.Bold);
+            this.lblSelectedName.Location = new System.Drawing.Point(103, 10);
+            this.lblSelectedName.Name = "lblSelectedName";
+            this.lblSelectedName.Size = new System.Drawing.Size(104, 24);
+            this.lblSelectedName.TabIndex = 6;
+            this.lblSelectedName.Text = "GetName()";
             // 
             // label8
             // 
@@ -354,30 +354,30 @@
             // dgvShowParameters
             // 
             this.dgvShowParameters.AllowUserToAddRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.dgvShowParameters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShowParameters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvShowParameters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShowParameters.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvShowParameters.ColumnHeadersHeight = 24;
             this.dgvShowParameters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvShowParameters.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmnName,
             this.Column1,
             this.clmnRequired});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvShowParameters.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvShowParameters.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvShowParameters.GridColor = System.Drawing.Color.Black;
             this.dgvShowParameters.Location = new System.Drawing.Point(6, 37);
             this.dgvShowParameters.Name = "dgvShowParameters";
@@ -474,6 +474,17 @@
             this.guna2Panel8.Size = new System.Drawing.Size(1378, 229);
             this.guna2Panel8.TabIndex = 7;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 14);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1371, 203);
+            this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.Visible = false;
+            // 
             // lblResult
             // 
             this.lblResult.AutoSize = true;
@@ -530,17 +541,6 @@
             this.guna2Button3.TabIndex = 9;
             this.guna2Button3.Text = "Clear All";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 14);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1371, 203);
-            this.dataGridView1.TabIndex = 8;
-            this.dataGridView1.Visible = false;
             // 
             // Form1
             // 
@@ -608,9 +608,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn clmnRequired;
-        private System.Windows.Forms.Label lblisStatic;
-        private System.Windows.Forms.Label lblMethodReturnType;
-        private System.Windows.Forms.Label lblMethodName;
+        private System.Windows.Forms.Label lblIsSelectedStatic;
+        private System.Windows.Forms.Label lblSelectedReturnType;
+        private System.Windows.Forms.Label lblSelectedName;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
