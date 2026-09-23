@@ -229,7 +229,7 @@ The development period was intentionally short, with the main objective being to
 
 ## 👨‍💻 Author
 
-**Ayman Amin Al-Amry**
+**Aiman Ameen**
 
 Computer Science Student
 C# / .NET Developer
